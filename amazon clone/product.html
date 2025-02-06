@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .product-img {
+            flex: 1;
+            text-align: center;
+        }
+        .product-img img {
+            width: 250px;
+            height: auto;
+        }
+        .product-details {
+            flex: 2;
+            padding: 20px;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b12704;
+        }
+        .cart-btn, .buy-btn {
+            background: rgb(221, 19, 19);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .cart-btn:hover, .buy-btn:hover {
+            background:rgb(221, 19, 19);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header class="header">
+            <a href="index.html"><img src="prime_img.png" alt="prime"></a>  
+            <a href="#img2"><img src="name_header.png" alt="name"></a>  
+            <div class="search-container">
+                <input type="text" placeholder="Search Amazon.in">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>  
+            
+
+            <!--language-->
+            <div class="dropdown">
+                <button class="dropdown-btn"><label for="lang"><strong><b>EN</b></strong></label> </button>
+                <div class="dropdown-content">
+                  <div class="checkbox-group">
+                    <select name="cars" id="cars">
+                        <option value="volvo">Hindi</option>
+                        <option value="saab">Bengali</option>
+                        <option value="opel">Marathi</option>
+                        <option value="audi">Kannada</option>
+                        <option value="audi">Tamil</option>
+                        <option value="audi">Telugu</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+              <a href="#idkimage" ><img src="return.png" alt="nav" class="img1"></a>
+            <a href="cart.html"><img src="cart.png" alt="cart" class="img1"></a>
+    
+    </div>
+    <div>  
+        <nav class="nav">
+            
+            <li class="border-white"></li><a href="#all">☰ All</a>
+            <li class="border-white"></li><a href="#f">Fresh</a>
+            <li class="border-white"></li><a href="mx">MX Player</a>
+            <li class="border-white"></li><a href="sell">Sell</a>
+            <li class="border-white"></li><a href="gcards">Gift Cards</a>
+            <li class="border-white"></li><a href="buy">Buy Again</a>
+            <li class="border-white"></li><a href="bh">Browsing History</a>
+            <li class="border-white"></li><a href="yn">YN's Amazon.in</a>
+            <li class="border-white"></li><a href="apay">Amazon Pay</a>
+            <li class="border-white"></li><a href="gideas">Gift Ideas</a>
+            <li class="border-white"></li><a href="sns">Subscribe & Save</a>
+            <li class="border-white"></li><a href="cservice">Customer Service</a>
+            <li class="border-white"></li><a href="abasic">Amazon Basics</a>
+            <li class="border-white"></li><a href="deals">Today's Deals</a>
+            <li class="border-white"></li><a href="home">Home Improvement</a>    
+    </div><br><br>
+    <div class="container" id="product-details"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get("id");
+            const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+            const product = await response.json();
+            
+            document.getElementById("product-details").innerHTML = `
+                <div class="product-img">
+                    <img src="${product.image}" alt="${product.title}">
+                </div>
+                <div class="product-details">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p><br>
+                    <p class="price">₹${(product.price * 80).toFixed(2)}</p>
+                    <button class="cart-btn" onclick="addToCart(${product.id}, '${product.title}', ${product.price * 80}, '${product.image}')">Add to Cart</button>
+                    <button class="buy-btn">Buy Now</button>
+                    <br><br><a href="cart.html">View Cart</a>
+                </div>
+            `;
+        });
+        
+        function addToCart(id, title, price, image) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ id, title, price, image });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Added to cart!");
+        }
+    </script>
+</body>
+</html>
