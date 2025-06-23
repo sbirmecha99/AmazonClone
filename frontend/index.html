@@ -7,6 +7,22 @@
     <link rel="icon" href="/src/amafaviocn.png">
     <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      const supabase = supabase.createClient(
+        "https://ldsvoxstazqnbjaqzyxu.supabase.co",
+        "your-anon-key"
+      );
+    
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        if (!session) {
+          window.location.href = "signup.html";
+        }
+      });
+    </script>
+    
+
     <title>Amazon Clone</title>
     <style>
         #products-container {
