@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f3f3;
+  height: 100vh;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.top-logo {
+  height: 55px;
+  width: 110px;
+  margin-bottom: 10px;
+}
+
+.Myh4 {
+  font-size: large;
+  font-weight: 520;
+  text-align: left;
+}
+
+.Myh1 {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.signup-container {
+  background: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+}
+
+.input-box {
+  margin-top: 3px; /* ✅ CHANGED: spacing between headings and inputs */
+}
+
+input {
+  width: 100%; 
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input:onclick {
+  border: rgb(111, 111, 247);
+}
+
+button {
+  width: 100%; 
+  padding: 10px;
+  background: #ffd814;
+  border: none;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 45px;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: #fbd61f;
+}
+.last-msg {
+  text-decoration: none;
+  color: #1a3f5d;
+}
+.last-msg:hover {
+  text-decoration: underline;
+}
+.privacy {
+  color: #1a3f5d;
+}
+.footer {
+  margin-top: 20px;              /* Space below the signup box */
+  padding-top: 10px;             /* Space above the text */
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #ccc;    /* ✅ Adds the line above the footer */
+}
+
