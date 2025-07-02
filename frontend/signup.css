@@ -81,12 +81,12 @@ button:hover {
   color: #1a3f5d;
 }
 .footer {
-  margin-top: 20px;              /* Space below the signup box */
-  padding-top: 10px;             /* Space above the text */
+  margin-top: 20px;              
+  padding-top: 10px;        
   width: 100%;
   text-align: center;
   font-size: 14px;
   color: #555;
-  border-top: 1px solid #ccc;    /* ✅ Adds the line above the footer */
+  border-top: 1px solid #ccc;  
 }
 
