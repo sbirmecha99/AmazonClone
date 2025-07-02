@@ -1,152 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
-    <title>Shopping Cart</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart | Amazon Clone</title>
+    <link rel="icon" href="/src/amafaviocn.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f3f3;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            margin-top: 50px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .cart-item {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .cart-item img {
-            width: 80px;
-            height: auto;
-            margin-right: 20px;
-        }
-        .cart-item h3 {
-            flex: 1;
-        }
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #b12704;
-        }
-        .remove-btn {
-            background: red;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-left: 10px;
-        }
-        .checkout-btn {
-            background: rgb(221, 19, 19);
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 20px;
-        }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #eaeded;
+      }
+      .header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  padding: 10px 20px;
+  background: #131921;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.header img {
+  height: 35px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.search-container {
+  flex: 1 1 300px; 
+  min-width: 200px;
+  display: flex;
+  max-width: 600px;
+  margin: 5px 0;
+  margin-right: 15px;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.icons a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+
+.icons a:hover {
+  color: #febd69;
+}
+      .search-container input {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-size: 16px;
+      }
+      .search-container button {
+        padding: 8px 16px;
+        background: #febd69;
+        border: none;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        background: #232f3e;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
+
+      .nav a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 10px;
+        border-bottom: 3px solid transparent; 
+        height: 100%; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-bottom 0.2s;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        border-bottom: 3px solid white;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .container h2 {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
+      .cart-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .cart-item img {
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 4px;
+        background: #fff;
+        padding: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .cart-item-details {
+        flex: 1;
+        min-width: 200px;
+      }
+      .cart-item-details h3 {
+        font-size: 16px;
+        margin: 0 0 5px 0;
+        color: #0f1111;
+      }
+      .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #b12704;
+      }
+      .remove-btn {
+        background: #d9534f;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.2s;
+      }
+      .remove-btn:hover {
+        background: #c9302c;
+      }
+      .checkout-section {
+        text-align: right;
+        margin-top: 20px;
+      }
+      .checkout-btn {
+        background: #f08804;
+        color: white;
+        padding: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 18px;
+        transition: background 0.2s;
+      }
+      .checkout-btn:hover {
+        background: #d67f00;
+      }
     </style>
-</head>
-<body>
-  <div>
-    <header class="header">
-        <a href="index.html"><img src="/src/prime_img.png" alt="prime"></a>  
-        <a href="#img2"><img src="/src/name_header.png" alt="name"></a>  
-        <div class="search-container">
-            <input type="text" placeholder="Search Amazon.in">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>  
-        
+  </head>
+  <body>
+<header class="header">
+    <a href="home.html">
+        <img src="/src/prime_img.png" alt="Amazon" style="height: 35px;">
+      </a>
+      <a href="#">
+        <img
+          src="/src/name_header.png"
+          alt="address"
+          style="height: 35px; margin-right: 15px"
+          ;
+        />
+      </a>
+      <div class="search-container">
+        <input type="text" placeholder="Search Amazon.in" />
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+      <div class="icons">
+        <a href="#"><i class="fa fa-user"></i> Account</a>
+        <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+      </div>
+    </header>
+  
 
-        <!--language-->
-        <div class="dropdown">
-            <button class="dropdown-btn"><label for="lang"><strong><b>EN</b></strong></label> </button>
-            <div class="dropdown-content">
-              <div class="checkbox-group">
-                <select name="cars" id="cars">
-                    <option value="volvo">Hindi</option>
-                    <option value="saab">Bengali</option>
-                    <option value="opel">Marathi</option>
-                    <option value="audi">Kannada</option>
-                    <option value="audi">Tamil</option>
-                    <option value="audi">Telugu</option>
-                  </select>
-              </div>
-            </div>
-          </div>
-          <a href="#idkimage" ><img src="/src/return.png" alt="nav" class="img1"></a>
-        <a href="cart.html"><img src="/src/cart.png" alt="cart" class="img1"></a>
-
-</div>
-<div>  
     <nav class="nav">
-        
-        <li class="border-white"></li><a href="#all">☰ All</a>
-        <li class="border-white"></li><a href="#f">Fresh</a>
-        <li class="border-white"></li><a href="mx">MX Player</a>
-        <li class="border-white"></li><a href="sell">Sell</a>
-        <li class="border-white"></li><a href="gcards">Gift Cards</a>
-        <li class="border-white"></li><a href="buy">Buy Again</a>
-        <li class="border-white"></li><a href="bh">Browsing History</a>
-        <li class="border-white"></li><a href="yn">YN's Amazon.in</a>
-        <li class="border-white"></li><a href="apay">Amazon Pay</a>
-        <li class="border-white"></li><a href="gideas">Gift Ideas</a>
-        <li class="border-white"></li><a href="sns">Subscribe & Save</a>
-        <li class="border-white"></li><a href="cservice">Customer Service</a>
-        <li class="border-white"></li><a href="abasic">Amazon Basics</a>
-        <li class="border-white"></li><a href="deals">Today's Deals</a>
-        <li class="border-white"></li><a href="home">Home Improvement</a>    
-</div>
-    <div class="container">
-        <h2>Your Shopping Cart</h2>
-        <div id="cart-items"></div>
+        <a href="#" class="active">☰ All</a>
+        <a href="#">Fresh</a>
+        <a href="#">MX Player</a>
+        <a href="#">Sell</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Buy Again</a>
+        <a href="#">Browsing History</a>
+        <a href="#">Amazon Pay</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Home Improvement</a>
+      </nav>
+      
+
+    <main class="container">
+      <h2>Your Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div class="checkout-section">
         <h3>Total: ₹<span id="total-price">0</span></h3>
         <button class="checkout-btn">Proceed to Checkout</button>
-    </div>
-    
+      </div>
+    </main>
+
     <script>
-        function loadCart() {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            let cartContainer = document.getElementById("cart-items");
-            let totalPrice = 0;
-            
-            cartContainer.innerHTML = "";
-            cart.forEach((item, index) => {
-                totalPrice += item.price;
-                cartContainer.innerHTML += `
-                    <div class="cart-item">
-                        <img src="${item.image}" alt="${item.title}">
-                        <h3>${item.title}</h3>
-                        <p class="price">₹${item.price.toFixed(2)}</p>
-                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                    </div>
-                `;
-            });
-            document.getElementById("total-price").innerText = totalPrice.toFixed(2);
-        }
-        
-        function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.splice(index, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            loadCart();
-        }
-        
-        document.addEventListener("DOMContentLoaded", loadCart);
+      function loadCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartContainer = document.getElementById("cart-items");
+        let totalPrice = 0;
+        cartContainer.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          totalPrice += item.price;
+          const cartItem = document.createElement("div");
+          cartItem.classList.add("cart-item");
+          cartItem.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <div class="cart-item-details">
+            <h3>${item.title}</h3>
+            <p class="price">₹${item.price.toFixed(2)}</p>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+        `;
+          cartContainer.appendChild(cartItem);
+        });
+        document.getElementById("total-price").innerText =
+          totalPrice.toFixed(2);
+      }
+      function removeFromCart(index) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+      }
+      document.addEventListener("DOMContentLoaded", loadCart);
     </script>
-</body>
+  </body>
 </html>
