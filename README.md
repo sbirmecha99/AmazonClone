@@ -20,7 +20,7 @@ This is a basic clone of the Amazon India homepage that I built as my first full
 
 ## 🚀 Live Demo
 
-Check it out here: [http://your-cloudfront-link](#)
+Check it out here: [(https://d5sz0fo8n2nub.cloudfront.net/)](#)
 
 ## 📝 Notes
 
